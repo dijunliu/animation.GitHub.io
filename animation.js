@@ -7,12 +7,20 @@ animate = {
         var canvas =  document.getElementById('animatecanvas');
         var context = canvas.getContext('2d');
         mouse = utils.capturemouse(canvas);
-        canvas.addEventListener('mousedown', function () {
-            console.log("x= "+mouse.x+" ,y= "+mouse.y);
-        });
-        touch = utils.captureTouch(canvas);
-        canvas.addEventListener('touchstart', function () {
-            console.log("x= "+touch.x+" ,y= "+touch.y+" isPressed:"+touch.isPressed);
-        })
+        utils.capturekey();
+        var arrow = new Arrow();
+
+        arrow.x = canvas.width/2;
+        arrow.y = canvas.height/2;
+
+        (function drawFrame(){
+            window.requestAnimationFrame(drawFrame);
+            var dx = mouse.x - arrow.x,
+                dy = mouse.y - arrow.y;
+            context.clearRect(0,0,canvas.width,canvas.height);
+            arrow.rotation = Math.atan2(dy,dx);
+            arrow.draw(context);
+
+        }());
     }
 }
