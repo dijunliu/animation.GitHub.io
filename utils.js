@@ -18,7 +18,6 @@ if (!window.cancelRequestAnimationFrame) {
                                             window.clearTimeout);
 }
 
-window.utils = {};
 
 var utils = {
     capturemouse:function (element) {

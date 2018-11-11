@@ -1,5 +1,5 @@
 window.onload = function () {
-    animate.start();
+    tools.init();
 }
 
 animate = {
