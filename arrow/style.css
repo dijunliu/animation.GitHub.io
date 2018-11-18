@@ -1,0 +1,18 @@
+#container{
+    width: 700px;
+    margin: 0 auto;
+}
+
+#animatecanvas{
+    border: black solid 1px;
+}
+#importPoint,#restart{
+    float: left;
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    background: #ffb400;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
