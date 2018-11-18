@@ -1,11 +1,13 @@
 window.onload = function () {
     canvas =  document.getElementById('animatecanvas');
     context = canvas.getContext('2d');
+    isFire = false;
+    fireSv = 0;
     img = new Image();
-    img.src = 'Rocket.png';
+    img.src = 'rocketBody.png';
 
     imgF = new Image();
-    imgF.src = 'fire.png';
+    imgF.src = 'rocketFire.png';
     ball = new Rocket();
     ball.x = canvas.width/2;
     ball.y = canvas.height/2;

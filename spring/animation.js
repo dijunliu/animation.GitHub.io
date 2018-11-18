@@ -106,16 +106,16 @@ function drawFrame() {
     // ball.y +=ball.vy;
 
     //链式弹性ball
-    // balls.forEach(drawSpringBall);
+    balls.forEach(drawSpringBall);
 
 
     //多点控制ball弹动
-    handleBall.forEach(applyHandle);
-    ball.vx *=friction;
-    ball.x +=ball.vx;
-
-    ball.vy *=friction;
-    //ball.vy +=gravity;
-    ball.y +=ball.vy;
-    ball.draw(context);
+    // handleBall.forEach(applyHandle);
+    // ball.vx *=friction;
+    // ball.x +=ball.vx;
+    //
+    // ball.vy *=friction;
+    // ball.vy +=gravity;
+    // ball.y +=ball.vy;
+    // ball.draw(context);
 }
