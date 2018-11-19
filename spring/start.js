@@ -1,10 +1,10 @@
 window.onload = function () {
     canvas =  document.getElementById('animatecanvas');
     context = canvas.getContext('2d');
-    friction = 0.5;
-    gravity = 2;
-    spring =0.01;
-
+    friction = 0.95; //摩擦力（反比）
+    gravity = 0.01;
+    spring =0.01; //弹簧力度
+    ballsnum = 3;
 
     //多点控制ball弹动
     // handleBall = [];
@@ -22,10 +22,20 @@ window.onload = function () {
     // ball.y = canvas.height/2;
 
     //链式弹性ball
+    // balls = [];
+    // ballnum = 80;
+    // while(ballnum --){
+    //     balls.push(new Ball(20));
+    // }
+
+
+    //双向弹动
     balls = [];
-    ballnum = 80;
-    while(ballnum --){
-        balls.push(new Rocket(20));
+    for(var ball,i=0;i<ballsnum;i++){
+        ball = new Ball();
+        ball.x = Math.random()*canvas.width;
+        ball.y = Math.random()*canvas.height;
+        balls.push(ball);
     }
 
     mouse = new utils.capturemouse(canvas);

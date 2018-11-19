@@ -1,8 +1,60 @@
+function drawContactLine(balls) {
+    context.beginPath();
+    context.moveTo(balls[0].x,balls[0].y);
+    for (var i=balls.length-1;i>=0;i--) {
+        context.lineTo(balls[i].x,balls[i].y);
+    }
+    context.stroke();
+}
+
+function drawTwoWaySpringBall(ball,i) {
+    if(i === 0){
+        var ballA = balls[balls.length-1];
+        var ballC = balls[i+1];
+        twoWayspringball(ball,ballA.x,ballA.y);
+        twoWayspringball(ball,ballC.x,ballC.y);
+    }else if(i === balls.length-1){
+        var ballA = balls[i-1];
+        var ballC = balls[0];
+        twoWayspringball(ball,ballA.x,ballA.y);
+        twoWayspringball(ball,ballC.x,ballC.y);
+    }else{
+        var ballA = balls[i-1];
+        var ballC = balls[i+1];
+        twoWayspringball(ball,ballA.x,ballA.y);
+        twoWayspringball(ball,ballC.x,ballC.y);
+    }
+    ball.draw(context);
+}
+
+
+function twoWayspringball(ballA,x,y) {
+    var dx = x - ballA.x;
+    var dy = y - ballA.y;
+    var angle = Math.atan2(dy,dx);
+    var targetX = x - Math.cos(angle)*100;
+    var targetY = y - Math.sin(angle)*100;
+
+    ballA.ax = (targetX - ballA.x)*spring;
+    ballA.ay = (targetY - ballA.y)*spring;
+
+    ballA.vx +=ballA.ax;
+    ballA.vy +=ballA.ay;
+
+    ballA.vx *=friction;
+    ballA.vy *=friction;
+
+    ballA.x +=ballA.vx;
+    ballA.vy +=gravity;
+    ballA.y +=ballA.vy;
+}
+
+
 function springball(ballA,targetX,targetY) {
     var dx = targetX - ballA.x;
     var dy = targetY - ballA.y;
-    ballA.ax = dx/10;
-    ballA.ay = dy/10;
+    ballA.ax = dx*spring;
+    ballA.ay = dy*spring;
 
 
     ballA.vx +=ballA.ax;
@@ -106,7 +158,7 @@ function drawFrame() {
     // ball.y +=ball.vy;
 
     //链式弹性ball
-    balls.forEach(drawSpringBall);
+    //balls.forEach(drawSpringBall);
 
 
     //多点控制ball弹动
@@ -118,4 +170,8 @@ function drawFrame() {
     // ball.vy +=gravity;
     // ball.y +=ball.vy;
     // ball.draw(context);
+
+    //双向弹动
+    drawContactLine(balls);
+    balls.forEach(drawTwoWaySpringBall);
 }

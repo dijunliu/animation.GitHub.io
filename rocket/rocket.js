@@ -36,13 +36,13 @@ Rocket.prototype.draw = function (context) {
         context.translate(this.x,this.y);
         context.rotate(this.rotation);
         var dfSv = 0.5 - fireSv;
-        if(this.fscaleX < 0.5){
+        if(this.fscaleX > 0){
             this.fscaleX += dfSv*0.1;
             this.fscaleY += dfSv*0.1;
         }
         context.scale(this.fscaleX,this.fscaleY);
 
-        context.drawImage(imgF,(-imgF.width/2)*this.fscaleX,(-imgF.height/2+img.height/2+45)*this.scaleX);
+        context.drawImage(imgF,-imgF.width/2,80);
     }
 
     // context.moveTo(0,100);
