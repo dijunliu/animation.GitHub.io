@@ -229,7 +229,7 @@ var utils = {
         window.addEventListener('keydown',function (event) {
             switch (event.keyCode) {
                 case keycode.UP:
-                    speed = 0.05;
+                    speed = 0.01;
                     isFire = 'start';
                     fireSv = 0.01;
                     break;

@@ -23,27 +23,38 @@ Rocket.prototype.draw = function (context) {
     if(isFire === 'start'){
         context.translate(this.x,this.y);
         context.rotate(this.rotation);
-        if((0.5 - this.fscaleX) > 0 && (0.5 - this.fscaleY) > 0){
-            this.fscaleX += fireSv*0.9;
-            this.fscaleY += fireSv*0.9;
-            console.log(this.fscaleX);
-            console.log(fireSv);
+        if((0.6 - this.fscaleX) > 0 || (0.5 - this.fscaleY) > 0){
+            if(this.fscaleX < 0.6){
+                this.fscaleX += fireSv*10;
+            }
+            if(this.fscaleY < 0.5){
+                this.fscaleY += fireSv*1.5;
+            }
+            // console.log('开始增大');
+            // console.log(this.fscaleX);
+            // console.log(fireSv);
         }
         context.scale(this.fscaleX,this.fscaleY);
-
-        //context.drawImage(imgF,-imgF.width/2*this.fscaleX,0);
         context.drawImage(imgF,-imgF.width/2,87);
+
     }else if(isFire === 'down'){
         context.translate(this.x,this.y);
         context.rotate(this.rotation);
         if(this.fscaleX > 0 && this.fscaleY > 0){
-            this.fscaleX += fireSv*0.1;
+            this.fscaleX += fireSv*0.3;
             this.fscaleY += fireSv*0.5;
+            // console.log('开始减小');
+            // console.log(this.fscaleX);
+            // console.log(fireSv);
         }else{
             fireSv = 0;
             this.fscaleX = 0;
             this.fscaleY = 0;
             isFire = undefined;
+            // console.log('减为0');
+            // console.log(this.fscaleX);
+            // console.log(fireSv);
+
         }
         context.scale(this.fscaleX,this.fscaleY);
         context.drawImage(imgF,-imgF.width/2,44*1/this.fscaleY);
