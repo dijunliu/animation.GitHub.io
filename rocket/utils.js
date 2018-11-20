@@ -230,10 +230,8 @@ var utils = {
             switch (event.keyCode) {
                 case keycode.UP:
                     speed = 0.05;
-                    isFire = true;
-                    ball.fscaleX = 0;
-                    ball.fscaleY = 0;
-                    fireSv += 0.01;
+                    isFire = 'start';
+                    fireSv = 0.01;
                     break;
                 case keycode.DOWN:
                     speed = -0.05;
@@ -250,7 +248,8 @@ var utils = {
             switch (event.keyCode) {
                 case keycode.UP:
                     speed = 0;
-                    isFire = false;
+                    isFire = 'down';
+                    fireSv = -0.01;
                     break;
                 case keycode.DOWN:
                     speed = 0;

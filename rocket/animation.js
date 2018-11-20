@@ -19,9 +19,13 @@ function drawFrame() {
 
 
     ball.vx += Math.cos(ball.rotation-Math.PI/2)*speed;
-    ball.x +=ball.vx;
+    ball.vx *= friction;
+    ball.x += ball.vx;
+
     ball.vy += Math.sin(ball.rotation-Math.PI/2)*speed;
-    ball.y +=ball.vy;
+    ball.vy *= friction;
+    ball.vy += gravity;
+    ball.y += ball.vy;
 
     ball.draw(context);
 }

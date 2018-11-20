@@ -158,7 +158,7 @@ function drawFrame() {
     // ball.y +=ball.vy;
 
     //链式弹性ball
-    //balls.forEach(drawSpringBall);
+    balls.forEach(drawSpringBall);
 
 
     //多点控制ball弹动
@@ -172,6 +172,6 @@ function drawFrame() {
     // ball.draw(context);
 
     //双向弹动
-    drawContactLine(balls);
-    balls.forEach(drawTwoWaySpringBall);
+    // drawContactLine(balls);
+    // balls.forEach(drawTwoWaySpringBall);
 }

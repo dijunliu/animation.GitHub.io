@@ -1,8 +1,11 @@
 window.onload = function () {
     canvas =  document.getElementById('animatecanvas');
     context = canvas.getContext('2d');
-    isFire = false;
+    isFire = undefined;
     fireSv = 0;
+    firedownSv = 0;
+    friction = 0.99;
+    gravity = 0.00;
     img = new Image();
     img.src = 'rocketBody.png';
 

@@ -18,6 +18,38 @@ function Rocket(radius, color) {
 
 
 Rocket.prototype.draw = function (context) {
+
+    context.save();
+    if(isFire === 'start'){
+        context.translate(this.x,this.y);
+        context.rotate(this.rotation);
+        if((0.5 - this.fscaleX) > 0 && (0.5 - this.fscaleY) > 0){
+            this.fscaleX += fireSv*0.9;
+            this.fscaleY += fireSv*0.9;
+            console.log(this.fscaleX);
+            console.log(fireSv);
+        }
+        context.scale(this.fscaleX,this.fscaleY);
+
+        //context.drawImage(imgF,-imgF.width/2*this.fscaleX,0);
+        context.drawImage(imgF,-imgF.width/2,87);
+    }else if(isFire === 'down'){
+        context.translate(this.x,this.y);
+        context.rotate(this.rotation);
+        if(this.fscaleX > 0 && this.fscaleY > 0){
+            this.fscaleX += fireSv*0.1;
+            this.fscaleY += fireSv*0.5;
+        }else{
+            fireSv = 0;
+            this.fscaleX = 0;
+            this.fscaleY = 0;
+            isFire = undefined;
+        }
+        context.scale(this.fscaleX,this.fscaleY);
+        context.drawImage(imgF,-imgF.width/2,44*1/this.fscaleY);
+    }
+    context.restore();
+
     context.save();
     context.fillStyle = this.color;
     context.lineWidth = this.lineWidth;
@@ -29,33 +61,5 @@ Rocket.prototype.draw = function (context) {
     //context.arc(0,0,this.radius,0,Math.PI*2,false);
 
     context.drawImage(this.img,-img.width/2,-img.height/2);
-    context.restore();
-
-    context.save();
-    if(isFire){
-        context.translate(this.x,this.y);
-        context.rotate(this.rotation);
-        var dfSv = 0.5 - fireSv;
-        if(this.fscaleX > 0){
-            this.fscaleX += dfSv*0.1;
-            this.fscaleY += dfSv*0.1;
-        }
-        context.scale(this.fscaleX,this.fscaleY);
-
-        context.drawImage(imgF,-imgF.width/2,80);
-    }
-
-    // context.moveTo(0,100);
-    // context.lineTo(100,25);
-    // context.lineTo(50,25);
-    // context.lineTo(50,-100);
-    // context.lineTo(-50,-100);
-    // context.lineTo(-50,-25);
-    // context.lineTo(-50,25);
-    // context.lineTo(-100,25);
-    // context.lineTo(0,100);
-    // context.stroke();
-    // context.fill();
-
     context.restore();
 }
