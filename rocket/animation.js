@@ -45,7 +45,9 @@ function drawFrame() {
     //draw mete animation
     for(var i=0;i<metes.length;i++){
         metes[i].y += gravity+0.1;
-        metes[i].rotation += metes[i].rotateV;
+        metes[i].rotation += metes[i].rotateV/2;
         metes[i].draw(context);
     }
+
+    Starts.draw(context);
 }

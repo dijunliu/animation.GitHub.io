@@ -18,6 +18,14 @@ if (!window.cancelRequestAnimationFrame) {
                                             window.clearTimeout);
 }
 
+function play(){
+    if(startS.pause && !beginPlay){
+        startS.currentTime = 0;
+        startS.loop = true;
+        startS.play();
+        beginPlay = true;
+    }
+}
 
 var keycode = {
     BACKSPACE: 8,
@@ -229,11 +237,22 @@ var utils = {
         window.addEventListener('keydown',function (event) {
             switch (event.keyCode) {
                 case keycode.UP:
+                    // if(downS.currentTime > 0.1){
+                    //     downS.currentTime = 0;
+                    //     downS.pause();
+                    // }
                     speed = 0.005;
                     isFire = 'start';
                     fireSv = 0.01;
-                    startS.currentTime = 2;
-                    startS.play();
+
+                    //beginPlay判断是否第一次按下
+                    //play();  待解决的问题
+
+                    // if(startS.currentTime > 1.3){
+                    //     console.log(startS.duration);
+                    //     startS.currentTime = 0;
+                    //     startS.play();
+                    // }
                     break;
                 case keycode.DOWN:
                     speed = -0.05;
@@ -252,7 +271,10 @@ var utils = {
                     speed = 0;
                     isFire = 'down';
                     fireSv = -0.01;
+                    beginPlay = false;
+                    // console.log(1);
                     startS.pause();
+                    //downS.play();
                     break;
                 case keycode.DOWN:
                     speed = 0;

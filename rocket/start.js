@@ -3,13 +3,17 @@ window.onload = function () {
     //初始化环境
     loader.init();
 
+
+
     //音频加载
     windS = loader.loadSound('wind.mp3');
     downS = loader.loadSound('down.mp3');
     startS = loader.loadSound('start.mp3');
     startSPlay = false;
     windS.loop = true;
-    windS.play();
+    beginPlay = false;
+    startS.pause();
+    //windS.play();
     //startS.play();
 
     //游戏背景
@@ -63,9 +67,6 @@ window.onload = function () {
     //流星初始化
     function  meteorsAnimate(){
         setTimeout(meteorsAnimate,4000);
-        if(typeof meteors != "undefined"){
-            console.log("meteors[0].vx:"+meteors[0].vx+"   meteors[0].ax:"+meteors[0].ax);
-        }
         meteors = [];
         meteorNum = Math.random()*9+5;
         meteImg3 = loader.loadImg('img/Meteor3.png');
@@ -79,6 +80,14 @@ window.onload = function () {
         meteorSpeed = 2;
     }
     meteorsAnimate();
+
+
+    Starts = new Starts(1);
+    Starts.x = canvas.width/2;
+    Starts.y = canvas.height/2;
+
+
+
 
     //图片加载完毕，开始动画
     loader.onload = function (){
