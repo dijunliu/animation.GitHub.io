@@ -1,8 +1,9 @@
 #container{
-    width: 700px;
+    width: 1200px;
     margin: 0 auto;
 }
 
-#animatecanvas{
+#animatecanvas,#animateBg{
+    position: absolute;
     border: black solid 1px;
 }

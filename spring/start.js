@@ -1,8 +1,8 @@
 window.onload = function () {
     canvas =  document.getElementById('animatecanvas');
     context = canvas.getContext('2d');
-    friction = 0.8; //摩擦力（反比）
-    gravity = 0.1;
+    friction = 0.85; //摩擦力（反比）
+    gravity = 0.15;
     spring =0.01; //弹簧力度
     ballsnum = 10;
 
